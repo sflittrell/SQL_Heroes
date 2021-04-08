@@ -37,6 +37,10 @@ switch ($route) {
     createHero($conn);
     $myData = getAllHeroes($conn);
     break;
+  case "deleteHero":
+    deleteHero($conn);
+    $myData = getAllHeroes($conn);
+    break;
   default:
     $myData = json_encode([]);
 }
@@ -125,6 +129,15 @@ function createHero($conn){
     echo "Hero created successfully";
   } else {
     echo "Error creating hero: " . mysqli_error($conn);
+  }
+}
+
+function deleteHero($conn){
+  $sql = "DELETE FROM heroes WHERE name='Constructor Lad'";
+  if (mysqli_query($conn, $sql)) {
+    echo "Hero deleted successfully";
+  } else {
+    echo "Error deleting hero: " . mysqli_error($conn);
   }
 }
 
