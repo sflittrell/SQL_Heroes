@@ -27,6 +27,12 @@
             <em>change the id in the address bar to choose the hero</em></li>
             <li><a href="/api.php?route=getAllAbilities" target="_blank">Get All Abilities</a><br>
             <em>show all hero abilities</em></li>
+            <li><a href="/api.php?route=updateAndGetAllAbilities" target="_blank">Update Ability</a><br>
+            <em>changes super strength</em></li>
+            <li><a href="/api.php?route=UndoUpdateAndGetAllAbilities" target="_blank">Undo Update Ability</a><br>
+            <em>changes super slothfullness</em></li>
+             <li><a href="/api.php?route=createHero" target="_blank">Create Hero</a><br>
+            <em>creates a new hero</em></li>
           </ul>
           
         </div>

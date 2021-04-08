@@ -22,8 +22,20 @@ switch ($route) {
     $id = $_GET['hero_id'];
     $myData = getHeroById($conn, $id);
     break;
-  case "getAllAbilities":
+    case "getAllAbilities":
     $myData = getAllAbilities($conn);
+    break;
+  case "updateAndGetAllAbilities":
+    updateAbilitie($conn);
+    $myData = getAllAbilities($conn);
+    break;
+  case "UndoUpdateAndGetAllAbilities":
+    UndoUpdateAbilitie($conn);
+    $myData = getAllAbilities($conn);
+    break;
+  case "createHero":
+    createHero($conn);
+    $myData = getAllHeroes($conn);
     break;
   default:
     $myData = json_encode([]);
@@ -85,37 +97,36 @@ function getAllAbilities($conn){
   return json_encode($data);
 }
 
-function getAllAbilities($conn){
-  $data = array();
+function updateAbilitie($conn){
   
-    $sql = "SELECT * FROM abilities";
-  $result = $conn->query($sql);
+    $sql = "UPDATE abilities SET ability = 'Super Slothfulness' WHERE id = 1";
 
-  if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-      array_push($data, $row);
-    }
-  } 
-  
-  return json_encode($data);
+    if (mysqli_query($conn, $sql)) {
+    echo "Abilitie changed successfully";
+  } else {
+    echo "Error updating ability: " . mysqli_error($conn);
+  }
 }
 
-// function getAllAbilities($conn){
-//   $data = array();
+function undoUpdateAbilitie($conn){
   
-//     $sql = "SELECT * FROM abilities";
-//   $result = $conn->query($sql);
+    $sql = "UPDATE abilities SET ability = 'Super Strength' WHERE id = 1";
 
-//   if ($result->num_rows > 0) {
-//     // output data of each row
-//     while($row = $result->fetch_assoc()) {
-//       array_push($data, $row);
-//     }
-//   } 
-  
-//   return json_encode($data);
-// }
+    if (mysqli_query($conn, $sql)) {
+    echo "Abilitie changed successfully";
+  } else {
+    echo "Error updating ability: " . mysqli_error($conn);
+  }
+}
+
+function createHero($conn){
+  $sql = "INSERT INTO heroes (name, about_me, biography) VALUES ('Constructor Lad', 'Can set any state', 'Sends props to all his kids')";
+  if (mysqli_query($conn, $sql)) {
+    echo "Hero created successfully";
+  } else {
+    echo "Error creating hero: " . mysqli_error($conn);
+  }
+}
 
 
 
