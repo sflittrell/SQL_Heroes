@@ -41,6 +41,10 @@ switch ($route) {
     deleteHero($conn);
     $myData = getAllHeroes($conn);
     break;
+    
+  case "getAllHerosAndAbilities":
+    $myData = getAllHerosAndAbilities($conn);
+    break;    
   default:
     $myData = json_encode([]);
 }
@@ -139,6 +143,26 @@ function deleteHero($conn){
   } else {
     echo "Error deleting hero: " . mysqli_error($conn);
   }
+}
+
+function getAllHerosAndAbilities($conn){
+  $data = array();
+  
+    $sql = "SELECT heroes.name, heroes.about_me, heroes.biography, abilities.ability
+    FROM heroes
+    INNER JOIN ability_hero ON ability_hero.hero_id = heroes.id
+    INNER JOIN abilities ON ability_hero.ability_id = abilities.id
+    ORDER BY heroes.id ASC";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      array_push($data, $row);
+    }
+  } 
+  
+  return json_encode($data);
 }
 
 

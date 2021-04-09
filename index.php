@@ -23,18 +23,20 @@
           <ul>
             <li><a href="/api.php?route=getAllHeroes" target="_blank">Get All Heroes</a><br>
             <em>show all heros</em></li>
-            <li><a href="/api.php?route=getHeroByID&hero_id=5" target="_blank">Get Hero By ID</a><br>
+            <li><a href="/api.php?route=getHeroByID&hero_id=1" target="_blank">Get Hero By ID</a><br>
             <em>change the id in the address bar to choose the hero</em></li>
             <li><a href="/api.php?route=getAllAbilities" target="_blank">Get All Abilities</a><br>
             <em>show all hero abilities</em></li>
+            <li><a href="/api.php?route=getAllHerosAndAbilities" target="_blank">Get All Heros with Abilities</a><br>
+            <em>show all hero with their abilities</em></li>
             <li><a href="/api.php?route=updateAndGetAllAbilities" target="_blank">Update Ability</a><br>
             <em>changes super strength</em></li>
             <li><a href="/api.php?route=UndoUpdateAndGetAllAbilities" target="_blank">Undo Update Ability</a><br>
-            <em>changes super slothfullness</em></li>
+            <em>undo the above ability change</em></li>
              <li><a href="/api.php?route=createHero" target="_blank">Create Hero</a><br>
             <em>creates a new hero</em></li>
             <li><a href="/api.php?route=deleteHero" target="_blank">Delete Hero</a><br>
-            <em>creates a new hero</em></li>
+            <em>deletes the created hero</em></li>
           </ul>
           
         </div>
